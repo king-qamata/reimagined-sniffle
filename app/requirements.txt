@@ -21,6 +21,8 @@ django-rest-auth
 django-rest-swagger
 django-todo
 djangorestframework
+drf-spectacular
+drf-spectacular-sidecar
 factory-boy
 Faker
 flake8

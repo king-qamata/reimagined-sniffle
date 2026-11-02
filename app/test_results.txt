@@ -1,0 +1,328 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0 -- /home/pedro-qamata/.local/share/virtualenvs/altavizbackend-qpmtOk-M/bin/python
+cachedir: .pytest_cache
+django: version: 6.0.4, settings: app.settings (from ini)
+rootdir: /home/pedro-qamata/code/altavizbackend
+configfile: pytest.ini
+plugins: Faker-40.15.0, django-4.12.0, cov-7.1.0
+collecting ... collected 15 items
+
+users/tests/test_api.py::TestUserAPI::test_create_user FAILED            [  6%]
+users/tests/test_api.py::TestUserAPI::test_create_user_duplicate_email FAILED [ 13%]
+users/tests/test_api.py::TestUserAPI::test_create_user_missing_password FAILED [ 20%]
+users/tests/test_api.py::TestUserAPI::test_get_user_list FAILED          [ 26%]
+users/tests/test_api.py::TestUserAPI::test_get_user_detail_authenticated FAILED [ 33%]
+users/tests/test_api.py::TestHealthCheck::test_health_check_success PASSED [ 40%]
+users/tests/test_api.py::TestHealthCheck::test_health_check_response_format PASSED [ 46%]
+users/tests/test_api.py::TestRateLimiting::test_anonymous_rate_limit PASSED [ 53%]
+users/tests/test_api.py::TestRateLimiting::test_authenticated_rate_limit_higher PASSED [ 60%]
+users/tests/test_api.py::TestAPIDocumentation::test_schema_endpoint_exists PASSED [ 66%]
+users/tests/test_api.py::TestAPIDocumentation::test_swagger_ui_endpoint_exists PASSED [ 73%]
+users/tests/test_api.py::TestAPIDocumentation::test_redoc_endpoint_exists PASSED [ 80%]
+users/tests/test_api.py::TestAuthentication::test_token_authentication FAILED [ 86%]
+users/tests/test_api.py::TestAuthentication::test_invalid_token_rejected FAILED [ 93%]
+users/tests/test_api.py::TestAuthentication::test_missing_token_rejected FAILED [100%]
+
+=================================== FAILURES ===================================
+_________________________ TestUserAPI.test_create_user _________________________
+users/tests/test_api.py:31: in test_create_user
+    assert response.status_code == status.HTTP_201_CREATED
+E   assert 404 == 201
+E    +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+E    +  and   201 = status.HTTP_201_CREATED
+---------------------------- Captured stdout setup -----------------------------
+Operations to perform:
+  Synchronize unmigrated apps: admindocs, corsheaders, crispy_forms, dal, dal_select2, dj_rest_auth, django_extensions, drf_spectacular, drf_spectacular_sidecar, messages, rest_framework, staticfiles
+  Apply all migrations: admin, auth, authtoken, contenttypes, core, fuelcredit, incidents, products, sessions, sites, users
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying core.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying authtoken.0001_initial... OK
+  Applying authtoken.0002_auto_20160226_1747... OK
+  Applying authtoken.0003_tokenproxy... OK
+  Applying authtoken.0004_alter_tokenproxy_options... OK
+  Applying core.0002_remove_user_username... OK
+  Applying core.0003_alter_profile_id_alter_user_id... OK
+  Applying fuelcredit.0001_initial... OK
+  Applying fuelcredit.0002_alter_invitation_id_alter_transfer_id_and_more... OK
+  Applying incidents.0001_initial... OK
+  Applying incidents.0002_alter_attachment_id_alter_comment_id_alter_task_id_and_more... OK
+  Applying products.0001_initial... OK
+  Applying products.0002_variation... OK
+  Applying products.0003_productimage... OK
+  Applying products.0004_auto_20150820_2156... OK
+  Applying products.0005_auto_20150820_2238... OK
+  Applying products.0006_productfeatured... OK
+  Applying products.0007_productfeatured_make_image_background... OK
+  Applying products.0008_productfeatured_text_css_color... OK
+  Applying products.0009_alter_category_id_alter_product_id_and_more... OK
+  Applying sessions.0001_initial... OK
+  Applying sites.0001_initial... OK
+  Applying sites.0002_alter_domain_unique... OK
+  Applying users.0001_initial... OK
+  Applying users.0002_customers... OK
+  Applying users.0003_auto_20210312_1520... OK
+  Applying users.0004_alter_administrator_id_alter_attendants_id_and_more... OK
+---------------------------- Captured stderr setup -----------------------------
+Looking for locale `en_US` in provider `faker.providers.address`.
+Provider `faker.providers.address` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.automotive`.
+Provider `faker.providers.automotive` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.bank`.
+Specified locale `en_US` is not available for provider `faker.providers.bank`. Locale reset to `en_GB` for this provider.
+Looking for locale `en_US` in provider `faker.providers.barcode`.
+Provider `faker.providers.barcode` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.color`.
+Provider `faker.providers.color` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.company`.
+Provider `faker.providers.company` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.credit_card`.
+Provider `faker.providers.credit_card` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.currency`.
+Provider `faker.providers.currency` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.date_time`.
+Provider `faker.providers.date_time` has been localized to `en_US`.
+Provider `faker.providers.doi` does not feature localization. Specified locale `en_US` is not used for this provider.
+Provider `faker.providers.emoji` does not feature localization. Specified locale `en_US` is not used for this provider.
+Provider `faker.providers.file` does not feature localization. Specified locale `en_US` is not used for this provider.
+Looking for locale `en_US` in provider `faker.providers.geo`.
+Provider `faker.providers.geo` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.internet`.
+Provider `faker.providers.internet` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.isbn`.
+Provider `faker.providers.isbn` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.job`.
+Provider `faker.providers.job` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.lorem`.
+Provider `faker.providers.lorem` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.misc`.
+Provider `faker.providers.misc` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.passport`.
+Provider `faker.providers.passport` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.person`.
+Provider `faker.providers.person` has been localized to `en_US`.
+Looking for locale `en_US` in provider `faker.providers.phone_number`.
+Provider `faker.providers.phone_number` has been localized to `en_US`.
+Provider `faker.providers.profile` does not feature localization. Specified locale `en_US` is not used for this provider.
+Provider `faker.providers.python` does not feature localization. Specified locale `en_US` is not used for this provider.
+Provider `faker.providers.sbn` does not feature localization. Specified locale `en_US` is not used for this provider.
+Looking for locale `en_US` in provider `faker.providers.ssn`.
+Provider `faker.providers.ssn` has been localized to `en_US`.
+Provider `faker.providers.user_agent` does not feature localization. Specified locale `en_US` is not used for this provider.
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+------------------------------ Captured log setup ------------------------------
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.address`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.address` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.automotive`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.automotive` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.bank`.
+DEBUG    faker.factory:factory.py:86 Specified locale `en_US` is not available for provider `faker.providers.bank`. Locale reset to `en_GB` for this provider.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.barcode`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.barcode` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.color`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.color` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.company`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.company` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.credit_card`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.credit_card` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.currency`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.currency` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.date_time`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.date_time` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:106 Provider `faker.providers.doi` does not feature localization. Specified locale `en_US` is not used for this provider.
+DEBUG    faker.factory:factory.py:106 Provider `faker.providers.emoji` does not feature localization. Specified locale `en_US` is not used for this provider.
+DEBUG    faker.factory:factory.py:106 Provider `faker.providers.file` does not feature localization. Specified locale `en_US` is not used for this provider.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.geo`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.geo` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.internet`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.internet` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.isbn`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.isbn` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.job`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.job` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.lorem`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.lorem` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.misc`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.misc` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.passport`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.passport` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.person`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.person` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.phone_number`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.phone_number` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:106 Provider `faker.providers.profile` does not feature localization. Specified locale `en_US` is not used for this provider.
+DEBUG    faker.factory:factory.py:106 Provider `faker.providers.python` does not feature localization. Specified locale `en_US` is not used for this provider.
+DEBUG    faker.factory:factory.py:106 Provider `faker.providers.sbn` does not feature localization. Specified locale `en_US` is not used for this provider.
+DEBUG    faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.ssn`.
+DEBUG    faker.factory:factory.py:95 Provider `faker.providers.ssn` has been localized to `en_US`.
+DEBUG    faker.factory:factory.py:106 Provider `faker.providers.user_agent` does not feature localization. Specified locale `en_US` is not used for this provider.
+----------------------------- Captured stderr call -----------------------------
+POST /api/v1/users/
+Response: 404
+Not Found: /api/v1/users/
+------------------------------ Captured log call -------------------------------
+INFO     app.exceptions:exceptions.py:60 POST /api/v1/users/
+INFO     app.exceptions:exceptions.py:73 Response: 404
+WARNING  django.request:log.py:249 Not Found: /api/v1/users/
+_________________ TestUserAPI.test_create_user_duplicate_email _________________
+users/tests/test_api.py:45: in test_create_user_duplicate_email
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
+E   assert 404 == 400
+E    +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+E    +  and   400 = status.HTTP_400_BAD_REQUEST
+----------------------------- Captured stderr call -----------------------------
+POST /api/v1/users/
+Response: 404
+Not Found: /api/v1/users/
+------------------------------ Captured log call -------------------------------
+INFO     app.exceptions:exceptions.py:60 POST /api/v1/users/
+INFO     app.exceptions:exceptions.py:73 Response: 404
+WARNING  django.request:log.py:249 Not Found: /api/v1/users/
+________________ TestUserAPI.test_create_user_missing_password _________________
+users/tests/test_api.py:54: in test_create_user_missing_password
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
+E   assert 404 == 400
+E    +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+E    +  and   400 = status.HTTP_400_BAD_REQUEST
+----------------------------- Captured stderr call -----------------------------
+POST /api/v1/users/
+Response: 404
+Not Found: /api/v1/users/
+------------------------------ Captured log call -------------------------------
+INFO     app.exceptions:exceptions.py:60 POST /api/v1/users/
+INFO     app.exceptions:exceptions.py:73 Response: 404
+WARNING  django.request:log.py:249 Not Found: /api/v1/users/
+________________________ TestUserAPI.test_get_user_list ________________________
+users/tests/test_api.py:62: in test_get_user_list
+    assert response.status_code == status.HTTP_200_OK
+E   assert 404 == 200
+E    +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+E    +  and   200 = status.HTTP_200_OK
+----------------------------- Captured stderr call -----------------------------
+GET /api/v1/users/
+Response: 404
+Not Found: /api/v1/users/
+------------------------------ Captured log call -------------------------------
+INFO     app.exceptions:exceptions.py:60 GET /api/v1/users/
+INFO     app.exceptions:exceptions.py:73 Response: 404
+WARNING  django.request:log.py:249 Not Found: /api/v1/users/
+________________ TestUserAPI.test_get_user_detail_authenticated ________________
+users/tests/test_api.py:72: in test_get_user_detail_authenticated
+    assert response.status_code == status.HTTP_200_OK
+E   assert 404 == 200
+E    +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+E    +  and   200 = status.HTTP_200_OK
+----------------------------- Captured stderr call -----------------------------
+GET /api/v1/users/1/
+Response: 404
+Not Found: /api/v1/users/1/
+------------------------------ Captured log call -------------------------------
+INFO     app.exceptions:exceptions.py:60 GET /api/v1/users/1/
+INFO     app.exceptions:exceptions.py:73 Response: 404
+WARNING  django.request:log.py:249 Not Found: /api/v1/users/1/
+_________________ TestAuthentication.test_token_authentication _________________
+users/tests/test_api.py:168: in test_token_authentication
+    assert response.status_code == status.HTTP_200_OK
+E   assert 404 == 200
+E    +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+E    +  and   200 = status.HTTP_200_OK
+----------------------------- Captured stderr call -----------------------------
+GET /api/v1/users/1/
+Response: 404
+Not Found: /api/v1/users/1/
+------------------------------ Captured log call -------------------------------
+INFO     app.exceptions:exceptions.py:60 GET /api/v1/users/1/
+INFO     app.exceptions:exceptions.py:73 Response: 404
+WARNING  django.request:log.py:249 Not Found: /api/v1/users/1/
+________________ TestAuthentication.test_invalid_token_rejected ________________
+users/tests/test_api.py:174: in test_invalid_token_rejected
+    assert response.status_code in [status.HTTP_401_UNAUTHORIZED, status.HTTP_403_FORBIDDEN]
+E   assert 404 in [401, 403]
+E    +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+----------------------------- Captured stderr call -----------------------------
+GET /api/v1/users/1/
+Response: 404
+Not Found: /api/v1/users/1/
+------------------------------ Captured log call -------------------------------
+INFO     app.exceptions:exceptions.py:60 GET /api/v1/users/1/
+INFO     app.exceptions:exceptions.py:73 Response: 404
+WARNING  django.request:log.py:249 Not Found: /api/v1/users/1/
+________________ TestAuthentication.test_missing_token_rejected ________________
+users/tests/test_api.py:180: in test_missing_token_rejected
+    assert response.status_code in [status.HTTP_401_UNAUTHORIZED, status.HTTP_200_OK]
+E   assert 404 in [401, 200]
+E    +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+----------------------------- Captured stderr call -----------------------------
+GET /api/v1/users/1/
+Response: 404
+Not Found: /api/v1/users/1/
+------------------------------ Captured log call -------------------------------
+INFO     app.exceptions:exceptions.py:60 GET /api/v1/users/1/
+INFO     app.exceptions:exceptions.py:73 Response: 404
+WARNING  django.request:log.py:249 Not Found: /api/v1/users/1/
+--------------------------- Captured stderr teardown ---------------------------
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+=============================== warnings summary ===============================
+app/users/tests/test_api.py: 15 warnings
+  /home/pedro-qamata/.local/share/virtualenvs/altavizbackend-qpmtOk-M/lib/python3.12/site-packages/django/core/handlers/base.py:62: UserWarning: No directory at: /home/pedro-qamata/code/altavizbackend/app/staticfiles/
+    mw_instance = middleware(adapted_handler)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name                Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------
+app/__init__.py         0      0      0      0   100%
+app/asgi.py             4      4      0      0     0%   10-16
+app/exceptions.py      28      2      4      2    88%   38, 89
+app/settings.py        64      4      2      1    92%   19-20, 138-139
+app/urls.py             5      0      0      0   100%
+app/wsgi.py             4      4      0      0     0%   10-16
+---------------------------------------------------------------
+TOTAL                 105     14      6      3    85%
+Coverage HTML written to dir htmlcov
+Required test coverage of 70% reached. Total coverage: 84.68%
+=========================== short test summary info ============================
+FAILED users/tests/test_api.py::TestUserAPI::test_create_user - assert 404 == 201
+ +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+ +  and   201 = status.HTTP_201_CREATED
+FAILED users/tests/test_api.py::TestUserAPI::test_create_user_duplicate_email - assert 404 == 400
+ +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+ +  and   400 = status.HTTP_400_BAD_REQUEST
+FAILED users/tests/test_api.py::TestUserAPI::test_create_user_missing_password - assert 404 == 400
+ +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+ +  and   400 = status.HTTP_400_BAD_REQUEST
+FAILED users/tests/test_api.py::TestUserAPI::test_get_user_list - assert 404 == 200
+ +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+ +  and   200 = status.HTTP_200_OK
+FAILED users/tests/test_api.py::TestUserAPI::test_get_user_detail_authenticated - assert 404 == 200
+ +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+ +  and   200 = status.HTTP_200_OK
+FAILED users/tests/test_api.py::TestAuthentication::test_token_authentication - assert 404 == 200
+ +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+ +  and   200 = status.HTTP_200_OK
+FAILED users/tests/test_api.py::TestAuthentication::test_invalid_token_rejected - assert 404 in [401, 403]
+ +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+FAILED users/tests/test_api.py::TestAuthentication::test_missing_token_rejected - assert 404 in [401, 200]
+ +  where 404 = <HttpResponseNotFound status_code=404, "text/html; charset=utf-8">.status_code
+=================== 8 failed, 7 passed, 15 warnings in 7.80s ===================

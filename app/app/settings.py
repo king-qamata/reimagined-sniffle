@@ -12,6 +12,7 @@ import os
 from django.core.management.utils import get_random_secret_key
 from urllib.parse import urlparse
 from django.contrib.messages import constants as message_constants
+from django.core.exceptions import ImproperlyConfigured
 
 try:
     from dotenv import load_dotenv
@@ -142,8 +143,9 @@ MESSAGE_TAGS = {message_constants.ERROR: "danger"}
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if os.getenv("DATABASE_URL", "") != "":
-    r = urlparse(os.environ.get("DATABASE_URL"))
+database_url = os.getenv("DATABASE_URL")
+if database_url:
+    r = urlparse(database_url)
     DATABASES = {
         'default': {
             "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -155,6 +157,11 @@ if os.getenv("DATABASE_URL", "") != "":
             "OPTIONS": {"sslmode": "require"},
         }
     }
+elif os.getenv("VERCEL"):
+    raise ImproperlyConfigured(
+        "DATABASE_URL must be configured for Vercel deployments. "
+        "SQLite is not supported as a persistent Vercel database."
+    )
 else:
     DATABASES = {
         'default': {

@@ -80,6 +80,12 @@ hosts automatically. Add any custom domain to `DJANGO_ALLOWED_HOSTS` as a
 comma-separated hostname. After changing project settings or environment
 variables, save and redeploy.
 
+Vercel also requires a persistent PostgreSQL database. Add its connection URL
+as the `DATABASE_URL` environment variable in the Vercel project settings for
+Production (and Preview if you deploy previews). The application deliberately
+does not fall back to SQLite on Vercel because serverless function storage is
+not a persistent database. Keep the URL private and redeploy after adding it.
+
 ### Environment Variables (.env file)
 
 ```env

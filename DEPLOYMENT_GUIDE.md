@@ -67,6 +67,19 @@ curl http://localhost:8000/health/
 
 ## 🔧 Configuration
 
+### Vercel
+
+Set **Root Directory** to `app` (the directory containing `manage.py` and
+`requirements.txt`). The Django settings module is then available at
+`app/settings.py` relative to the Vercel project root.
+
+Do not set the Root Directory to `app/app`: that directory contains
+`settings.py` directly, while the WSGI entrypoint imports `app.settings`.
+Vercel's deployment and production hostnames are added to Django's allowed
+hosts automatically. Add any custom domain to `DJANGO_ALLOWED_HOSTS` as a
+comma-separated hostname. After changing project settings or environment
+variables, save and redeploy.
+
 ### Environment Variables (.env file)
 
 ```env
